@@ -38,7 +38,7 @@ class CustomerLogoutObserver implements ObserverInterface
      * Customer logout processing
      *
      * @param \Magento\Framework\Event\Observer $observer
-     * @return void
+     * @return $this
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function execute(\Magento\Framework\Event\Observer $observer)

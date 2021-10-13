@@ -12,11 +12,8 @@
 namespace Magento\Reports\Model\ResourceModel\Product\Sold;
 
 use Magento\Framework\DB\Select;
-use Zend_Db_Select_Exception;
 
 /**
- * Data collection.
- *
  * @SuppressWarnings(PHPMD.DepthOfInheritance)
  * @api
  * @since 100.0.2
@@ -24,12 +21,11 @@ use Zend_Db_Select_Exception;
 class Collection extends \Magento\Reports\Model\ResourceModel\Order\Collection
 {
     /**
-     * Set Date range to collection.
+     * Set Date range to collection
      *
-     * @param string $from
-     * @param string $to
+     * @param int $from
+     * @param int $to
      * @return $this
-     * @throws Zend_Db_Select_Exception
      */
     public function setDateRange($from, $to)
     {
@@ -51,7 +47,6 @@ class Collection extends \Magento\Reports\Model\ResourceModel\Order\Collection
      * @param string $from
      * @param string $to
      * @return $this
-     * @throws Zend_Db_Select_Exception
      */
     public function addOrderedQty($from = '', $to = '')
     {
@@ -84,10 +79,6 @@ class Collection extends \Magento\Reports\Model\ResourceModel\Order\Collection
         )->having(
             'order_items.qty_ordered > ?',
             0
-        )->columns(
-            'SUM(order_items.qty_ordered) as ordered_qty'
-        )->group(
-            'order_items.sku'
         );
         return $this;
     }
@@ -125,8 +116,6 @@ class Collection extends \Magento\Reports\Model\ResourceModel\Order\Collection
     }
 
     /**
-     * @inheritdoc
-     *
      * @return Select
      * @since 100.2.0
      */
